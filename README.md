@@ -3,6 +3,7 @@
 ## Description
 
 Harmony Scoreboard (or HarmonyBoard for short) is a plugin that provides packet-based asynchronous scoreboards flicker-free and price free.
+
 ![Alt text](https://github.com/HarmonyPlugins/HarmonyBoard/blob/main/images/hboard_showcase.png?raw=true "Title")
 
 ## Configuration
