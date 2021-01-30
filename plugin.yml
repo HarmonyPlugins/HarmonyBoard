@@ -1,0 +1,20 @@
+main: me.oreoezi.harmonyboard.HarmonyBoard
+name: HarmonyScoreboard
+version: 1.0.0
+description: Light Weight Asynchronous Scoreboard
+author: Oreoezi
+softdepend: [PlaceholderAPI]
+commands:
+ harmonyboard:
+  description: Shows the HarmonyBoard commands
+  usage: /<command>
+  aliases: [harboard, hboard]
+permissions:
+ harmonyboard.help:
+  description: Shows all the harmonyboard commands
+  default: op
+ harmonyboard.reload:
+  description: Allows you to reload the config
+  default: op
+ harmonyboard.scoreboard:
+  description: Allows you to change the scoreboard of another player

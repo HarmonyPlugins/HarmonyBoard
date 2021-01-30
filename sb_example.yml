@@ -1,0 +1,10 @@
+title: "Your Server Network"
+size: 7
+lines:
+ 0: "a%default%a"
+ 1: "Hello &b%player%&f,"
+ 2: " "
+ 3: "Online Players: %online%"
+ 4: "  "
+ 5: "&byourserver.gg"
+ 6: "a%default%a "

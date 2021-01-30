@@ -1,0 +1,5 @@
+default-scoreboard: "default"
+permission-scoreboard:
+ "permissiontest1": "scoreboard2"
+ "permissiontest2": "scoreboard3"
+

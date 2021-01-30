@@ -1,0 +1,15 @@
+enable_default_scoreboard: true
+default_scoreboard: "default"
+
+enable_restricted_scoreboards: false
+restricted_scoreboards:
+ scoreboard2: "permission.for.scoreboard2"
+
+enable_perworld_scoreboards: false
+world_scoreboards: 
+ scoreboardworld: "world"
+ scoreboardend: "world_the_end"
+
+ 
+
+
