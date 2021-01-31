@@ -85,7 +85,53 @@ The names of animations are based on their filename in the Animations folder.
 
 The only official placeholders are ```%player%``` and ```%online%```. Harmony Scoreboard supports PlaceholderAPI.
 
+## API
 
+Harmony Scoreboard has an easy-to-use API for registering placeholders and changing the player's scoreboard.
+
+If you want to register placeholders when your plugin loads, make sure to have Harmony Scoreboard as a dependency.
+
+```depend: [HarmonyScoreboard]```
+
+### Registering Placeholders
+
+Every placeholder needs to be of type HarmonyPlaceholder. Here is an example of a placeholder that replaces %health% with the player's health.
+
+```
+public class HealthPlaceholder extends HarmonyPlaceholder {
+	@Override
+	public String getName() {
+		return "health";
+	}
+	@Override
+	public String getValue(Player player) {
+		return String.valueOf(player.getHealth());
+	}
+}
+```
+
+Then we need to register the placeholder. That can be easily done with
+
+```HarmonyBoardAPI.registerPlaceholder(new HealthPlaceholder());```
+
+All HarmonyBoardAPI functions are static, there is no need to create an instance.
+
+In order to remove the placeholder, you can either remove it based on its instance or on its name.
+```HarmonyBoardAPI.unregisterPlaceholder(healthplaceholder);
+HarmonyBoardAPI.unregisterPlaceholder("health");```
+
+### Setting Scoreboards
+
+You can set a player's scoreboard with the setScoreboard function. It takes as parameters the player and the name of the scoreboard you want to set. It bypasses and permission / world check.
+
+```
+try {
+	HarmonyBoardAPI.setScoreboard(player, "examplescoreboard");
+} catch (HarmonyBoardException e) {
+	e.printStackTrace();
+}
+```
+HarmonyBoardException is thrown if the player is null or if the name of the scoreboard is invalid.
 
 
 

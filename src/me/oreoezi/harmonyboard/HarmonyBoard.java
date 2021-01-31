@@ -1,5 +1,6 @@
 package me.oreoezi.harmonyboard;
 
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

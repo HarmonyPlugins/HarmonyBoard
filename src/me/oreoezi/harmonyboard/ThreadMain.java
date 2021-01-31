@@ -2,24 +2,28 @@ package me.oreoezi.harmonyboard;
 
 import java.util.ArrayList;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.clip.placeholderapi.PlaceholderAPI;
+import me.oreoezi.placeholders.OnlinePlayers;
+import me.oreoezi.placeholders.PlayerName;
 import me.oreoezi.utils.HarmonyAnimation;
+import me.oreoezi.utils.HarmonyPlaceholder;
 import me.oreoezi.utils.HarmonyScoreboard;
 
 public class ThreadMain extends BukkitRunnable {
 	private HarmonyBoard main;
 	private ArrayList<HarmonyAnimation> anims;
-	
+	public ArrayList<HarmonyPlaceholder> placeholders;
 	public ThreadMain(HarmonyBoard main) {
 		this.main = main;
 		this.anims = new ArrayList<HarmonyAnimation>();
+		this.placeholders = new ArrayList<HarmonyPlaceholder>();
 		createAnims();
+		createPlaceholders();
 	}
 	@Override
 	public void run() {
@@ -35,6 +39,10 @@ public class ThreadMain extends BukkitRunnable {
 		for (int i=0;i<config.getInt("size");i++) {
 			board.setLine(config.getInt("size")-i, parseLine(config.getString("lines."+i), player));
 		}
+	}
+	private void createPlaceholders() {
+		placeholders.add(new OnlinePlayers());
+		placeholders.add(new PlayerName());
 	}
 	private void createAnims() {
 		for (Object key : main.configs.animations.keySet()) {
@@ -54,8 +62,9 @@ public class ThreadMain extends BukkitRunnable {
 	}
 	private String parseLine(String input, Player player) {
 		String line = input;
-		line = line.replaceAll("%player%", player.getName());
-		line = line.replaceAll("%online%", String.valueOf(Bukkit.getOnlinePlayers().size()));
+		for (int i=0;i<placeholders.size();i++) {
+			line = line.replaceAll("%"+placeholders.get(i).getName()+"%", placeholders.get(i).getValue(player));
+		}
 		for (int i=0;i<anims.size();i++) {
 			if (anims.get(i) !=null)
 				line = line.replaceAll("a%" + anims.get(i).getName() + "%a", anims.get(i).getCurrentFrame());
