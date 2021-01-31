@@ -91,7 +91,9 @@ Harmony Scoreboard has an easy-to-use API for registering placeholders and chang
 
 If you want to register placeholders when your plugin loads, make sure to have Harmony Scoreboard as a dependency.
 
-```depend: [HarmonyScoreboard]```
+```
+depend: [HarmonyScoreboard]
+```
 
 ### Registering Placeholders
 
@@ -112,13 +114,18 @@ public class HealthPlaceholder extends HarmonyPlaceholder {
 
 Then we need to register the placeholder. That can be easily done with
 
-```HarmonyBoardAPI.registerPlaceholder(new HealthPlaceholder());```
+```
+HarmonyBoardAPI.registerPlaceholder(new HealthPlaceholder());
+```
 
 All HarmonyBoardAPI functions are static, there is no need to create an instance.
 
 In order to remove the placeholder, you can either remove it based on its instance or on its name.
-```HarmonyBoardAPI.unregisterPlaceholder(healthplaceholder);
-HarmonyBoardAPI.unregisterPlaceholder("health");```
+
+```
+HarmonyBoardAPI.unregisterPlaceholder(healthplaceholder);
+HarmonyBoardAPI.unregisterPlaceholder("health");
+```
 
 ### Setting Scoreboards
 
@@ -131,9 +138,5 @@ try {
 	e.printStackTrace();
 }
 ```
+
 HarmonyBoardException is thrown if the player is null or if the name of the scoreboard is invalid.
-
-
-
-
-
