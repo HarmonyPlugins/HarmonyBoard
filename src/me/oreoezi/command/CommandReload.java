@@ -25,7 +25,7 @@ public class CommandReload extends HarmonyCommand {
 		}
 		main.threadmain.cancel();
 		main.threadmain = new ThreadMain(main);
-		main.threadmain.runTaskTimerAsynchronously(main, 1L, 1L);
+		main.threadmain.runTaskTimerAsynchronously(main, main.configs.getConfig("config").getInt("scoreboard_update_rate"), main.configs.getConfig("config").getInt("scoreboard_update_rate"));
 		player.sendMessage(main.cfu.getMessage("prefix") + " " + main.cfu.getMessage("admin.reloaded"));
 	}
 	@Override

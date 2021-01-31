@@ -22,7 +22,7 @@ public class HarmonyBoard extends JavaPlugin {
 		this.eventmain = new EventMain(this);
 		getServer().getPluginManager().registerEvents(eventmain, this);
 		threadmain = new ThreadMain(this);
-		threadmain.runTaskTimerAsynchronously(this, 1L, 1L);
+		threadmain.runTaskTimerAsynchronously(this, configs.getConfig("config").getInt("scoreboard_update_rate"), configs.getConfig("config").getInt("scoreboard_update_rate"));
 		if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
 			papi = true;
 			getLogger().info("Detected PlaceHolderAPI.");

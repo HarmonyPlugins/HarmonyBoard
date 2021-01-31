@@ -10,6 +10,7 @@ world_scoreboards:
  scoreboardworld: "world"
  scoreboardend: "world_the_end"
 
+scoreboard_update_rate: 1
  
 
 

@@ -36,8 +36,8 @@ public class ThreadMain extends BukkitRunnable {
 		String boardtype = main.eventmain.boardtype.get(player.getName());
 		HarmonyScoreboard board = main.eventmain.playerboard.get(player);
 		FileConfiguration config = main.configs.getScoreboard(boardtype);
-		for (int i=0;i<config.getInt("size");i++) {
-			board.setLine(config.getInt("size")-i, parseLine(config.getString("lines."+i), player));
+		for (int i=0;i<config.getList("lines").size();i++) {
+			board.setLine(config.getList("lines").size()-i, parseLine((String) config.getList("lines").get(i), player));
 		}
 	}
 	private void createPlaceholders() {
@@ -52,7 +52,8 @@ public class ThreadMain extends BukkitRunnable {
 	}
 	private void updateAnimations() {
 		for (int i=0;i<anims.size();i++) {
-			anims.get(i).updateAnimation();
+			for (int j=0;j<main.configs.getConfig("config").getInt("scoreboard_update_rate");j++)
+				anims.get(i).updateAnimation();
 		}
 	}
 	public void destroy() {

@@ -26,6 +26,7 @@ config.yml is responsible for setting the default scoreboard, enabling permissio
     world_scoreboards: 
       scoreboardworld: "world"
       scoreboardend: "world_the_end"
+    scoreboard_update_rate: 1
 </details>
 
 ### language.yml
@@ -55,15 +56,14 @@ The names of scoreboards are based on their filename in the Scoreboards folder.
   <summary>example_scoreboard.yml</summary>
 
     title: "Your Server Network"
-    size: 7
     lines:
-    0: "a%default%a" #Animations have the placeholder a%animation_name%a
-    1: "Hello &b%player%&f,"
-    2: " "
-    3: "Online Players: %online%"
-    4: "  "
-    5: "&byourserver.gg"
-    6: "a%default%a "
+    - "a%default%a" #Animations have the placeholder a%animation_name%a
+    - "Hello &b%player%&f,"
+    - " "
+    - "Online Players: %online%"
+    - "  "
+    - "&byourserver.gg"
+    - "a%default%a "
 </details>
 
 
@@ -72,11 +72,10 @@ The names of animations are based on their filename in the Animations folder.
   <summary>example_animation.yml</summary>
 
       delay: 5 #number of ticks until the next line
-      size: 3
       lines:
-        0: "&a========================="
-        1: "&b========================="
-        2: "&c========================="
+       - "&a========================="
+       - "&b========================="
+       - "&c========================="
 </details>
 
 ![Alt text](https://github.com/HarmonyPlugins/HarmonyBoard/blob/main/images/showcasegif.gif?raw=true "Title")

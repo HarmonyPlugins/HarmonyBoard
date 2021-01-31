@@ -11,14 +11,14 @@ public class HarmonyAnimation {
 	public HarmonyAnimation(FileConfiguration config, String name) {
 		this.config = config;
 		this.name = name;
-		currentFrame = config.getString("lines."+frame);
+		currentFrame = (String) config.getList("lines").get(frame);
 	}
 	public void updateAnimation() {
 		interval++;
 		if (interval%config.getInt("delay") == 0) {
 			frame++;
-			if (frame >= config.getInt("size")) frame=0;
-			currentFrame = config.getString("lines."+frame);
+			if (frame >= config.getList("lines").size()) frame=0;
+			currentFrame =(String) config.getList("lines").get(frame);
 			interval = 0;
 		}
 	}
