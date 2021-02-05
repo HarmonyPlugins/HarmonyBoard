@@ -139,3 +139,5 @@ try {
 ```
 
 HarmonyBoardException is thrown if the player is null or if the name of the scoreboard is invalid.
+
+![Alt text](https://github.com/HarmonyPlugins/HarmonyBoard/blob/main/images/donation_addresses.png?raw=true "Title")
