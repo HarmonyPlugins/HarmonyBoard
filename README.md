@@ -133,6 +133,7 @@ You can set a player's scoreboard with the setScoreboard function. It takes as p
 ```
 try {
 	HarmonyBoardAPI.setScoreboard(player, "examplescoreboard");
+  HarmonyBoardAPI.removeScoreboard(player); // to remove it afterwards
 } catch (HarmonyBoardException e) {
 	e.printStackTrace();
 }

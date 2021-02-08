@@ -41,4 +41,13 @@ public class HarmonyBoardAPI {
 			main.eventmain.playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard(scoreboard).getString("title"), player));
 		}
 	}
+	public static void removeScoreboard(Player player) throws HarmonyBoardException {
+		HarmonyBoard main = (HarmonyBoard) Bukkit.getServer().getPluginManager().getPlugin("HarmonyScoreboard");
+		if (player == null) {
+			throw new HarmonyBoardException("Player parameter cannot be null.");
+		}
+		if (main.eventmain.playerboard.get(player) != null) main.eventmain.playerboard.get(player).destroy();
+		main.eventmain.playerboard.remove(player);
+		main.eventmain.boardtype.remove(player.getName());
+	}
 }

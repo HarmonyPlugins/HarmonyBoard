@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.oreoezi.placeholders.OnlinePlayers;
-import me.oreoezi.placeholders.PlayerName;
+import me.oreoezi.placeholders.*;
+import me.oreoezi.placeholders.symbols.*;
 import me.oreoezi.utils.HarmonyAnimation;
 import me.oreoezi.utils.HarmonyPlaceholder;
 import me.oreoezi.utils.HarmonyScoreboard;
@@ -43,6 +43,20 @@ public class ThreadMain extends BukkitRunnable {
 	private void createPlaceholders() {
 		placeholders.add(new OnlinePlayers());
 		placeholders.add(new PlayerName());
+		placeholders.add(new Health());
+		placeholders.add(new Ping());
+		placeholders.add(new HealthHearts());
+		placeholders.add(new Heart());
+		placeholders.add(new King());
+		placeholders.add(new Omega());
+		placeholders.add(new Queen());
+		placeholders.add(new Skull());
+		placeholders.add(new Star());
+		placeholders.add(new StarHollow());
+		placeholders.add(new Telephone());
+		placeholders.add(new PosX());
+		placeholders.add(new PosY());
+		placeholders.add(new PosZ());
 	}
 	private void createAnims() {
 		for (Object key : main.configs.animations.keySet()) {
@@ -63,12 +77,12 @@ public class ThreadMain extends BukkitRunnable {
 	}
 	private String parseLine(String input, Player player) {
 		String line = input;
-		for (int i=0;i<placeholders.size();i++) {
-			line = line.replaceAll("%"+placeholders.get(i).getName()+"%", placeholders.get(i).getValue(player));
-		}
 		for (int i=0;i<anims.size();i++) {
 			if (anims.get(i) !=null)
 				line = line.replaceAll("a%" + anims.get(i).getName() + "%a", anims.get(i).getCurrentFrame());
+		}
+		for (int i=0;i<placeholders.size();i++) {
+			line = line.replaceAll("%"+placeholders.get(i).getName()+"%", placeholders.get(i).getValue(player));
 		}
 		if (main.papi) line = PlaceholderAPI.setPlaceholders(player, line);
 		line = ChatColor.translateAlternateColorCodes('&', line);

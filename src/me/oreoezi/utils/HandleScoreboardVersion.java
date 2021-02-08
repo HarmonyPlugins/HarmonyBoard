@@ -21,9 +21,9 @@ public class HandleScoreboardVersion {
 			return new Scoreboard_1_14(title, player);
 		if (version.contains("1.15"))
 			return new Scoreboard_1_15(title, player);
-		if (version.contains("1.16.5") || version.contains("1.16.4") || version.contains("1.16.3"))
+		if (version.contains("1.16.5") || version.contains("1.16.4"))
 			return new Scoreboard_1_16_4(title, player);
-		if (version.contains("1.16.2"))
+		if (version.contains("1.16.2") || version.contains("1.16.3"))
 			return new Scoreboard_1_16_2(title, player);
 		if (version.contains("1.16"))
 			return new Scoreboard_1_16(title, player);
