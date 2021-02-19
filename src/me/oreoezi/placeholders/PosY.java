@@ -11,7 +11,7 @@ public class PosY extends HarmonyPlaceholder{
 	}
 	@Override
 	public String getValue(Player player) {
-		return String.valueOf(player.getLocation().getBlockY());
+		return String.valueOf(Math.floor(player.getLocation().getY()*10)/10);
 	}
 
 }

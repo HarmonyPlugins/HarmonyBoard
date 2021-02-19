@@ -18,6 +18,7 @@ public class CommandHelp {
 	private void genCommandList(HarmonyBoard main) {
 		commands.add(new CommandReload(main));
 		commands.add(new CommandScoreboard(main));
+		commands.add(new CommandToggle(main));
 	}
 	public void sendHelpList(Player player) {
 		if (player.hasPermission("harmonyboard.help")) {

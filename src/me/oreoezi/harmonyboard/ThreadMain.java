@@ -57,6 +57,8 @@ public class ThreadMain extends BukkitRunnable {
 		placeholders.add(new PosX());
 		placeholders.add(new PosY());
 		placeholders.add(new PosZ());
+		placeholders.add(new PosXOW());
+		placeholders.add(new PosZOW());
 	}
 	private void createAnims() {
 		for (Object key : main.configs.animations.keySet()) {

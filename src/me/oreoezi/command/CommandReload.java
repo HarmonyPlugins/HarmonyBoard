@@ -2,6 +2,7 @@ package me.oreoezi.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 
 import me.oreoezi.datamanagers.Configs;
 import me.oreoezi.harmonyboard.EventMain;
@@ -19,7 +20,9 @@ public class CommandReload extends HarmonyCommand {
 	public void onExec(Player player, String[] args) {
 		main.configs = new Configs(main);
 		main.threadmain.destroy();
+		HandlerList.unregisterAll(main.eventmain);
 		main.eventmain = new EventMain(main);
+		Bukkit.getServer().getPluginManager().registerEvents(main.eventmain, main);
 		for (Player pl : Bukkit.getOnlinePlayers()) {
 			main.eventmain.addPlayer(pl);
 		}
