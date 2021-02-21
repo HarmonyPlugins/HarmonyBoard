@@ -27,6 +27,7 @@ config.yml is responsible for setting the default scoreboard, enabling permissio
       scoreboardworld: "world"
       scoreboardend: "world_the_end"
     scoreboard_update_rate: 1
+    allow_placeholders_in_title: false
 </details>
 
 ### language.yml
