@@ -5,9 +5,11 @@ import org.bukkit.entity.Player;
 
 public class HarmonyScoreboard {
     public HarmonyScoreboard(String name, Player player) {
-    	
     }
     public void setLine(int pos, String text) {
+    	
+    }
+    public void setTitle(String title) {
     	
     }
     public void destroy() {

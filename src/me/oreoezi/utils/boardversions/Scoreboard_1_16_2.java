@@ -38,6 +38,11 @@ public class Scoreboard_1_16_2 extends HarmonyScoreboard{
     	connection.sendPacket(new PacketPlayOutScoreboardObjective(sb_obj, 0));
     	connection.sendPacket(new PacketPlayOutScoreboardDisplayObjective(1, sb_obj));
 	}
+	@Override 
+	public void setTitle(String title) {
+		sb_obj.setDisplayName(new ChatMessage(ChatColor.translateAlternateColorCodes('&',title)));
+		connection.sendPacket(new PacketPlayOutScoreboardObjective(sb_obj, 2));
+	}
 	@Override
 	public void setLine(int pos, String text) {
 		if (!lines.getOrDefault(pos, "").equals(text)) {

@@ -36,6 +36,9 @@ public class ThreadMain extends BukkitRunnable {
 		String boardtype = main.eventmain.boardtype.get(player.getName());
 		HarmonyScoreboard board = main.eventmain.playerboard.get(player);
 		FileConfiguration config = main.configs.getScoreboard(boardtype);
+		if (main.configs.getConfig("config").getBoolean("allow_placeholders_in_title")) {
+			board.setTitle(parseLine(config.getString("title"), player));
+		}
 		for (int i=0;i<config.getList("lines").size();i++) {
 			board.setLine(config.getList("lines").size()-i, parseLine((String) config.getList("lines").get(i), player));
 		}

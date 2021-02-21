@@ -18,3 +18,5 @@ permissions:
   default: op
  harmonyboard.scoreboard:
   description: Allows you to change the scoreboard of another player
+ harmonyboard.toggle:
+  description: Allows you to toggle your scoreboard
