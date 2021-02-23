@@ -18,7 +18,6 @@ public class CommandScoreboard extends HarmonyCommand {
 	}
 	@Override
 	public void onExec(Player player, String[] args) {
-		if (args.length < 2) player.sendMessage("");
 		switch(args[1]) {
 		case "remove": {
 			if (args.length < 3) {

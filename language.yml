@@ -8,3 +8,5 @@ messages:
   invalid_player: "Player does not exist or is not online."
  admin:
   reloaded: "Config successfully reloaded."
+  toggle_on: "Toggled scoreboard on successfully."
+  toggle_off: "Toggled scoreboard off successfully."

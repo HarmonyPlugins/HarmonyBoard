@@ -24,28 +24,37 @@ public class EventMain implements Listener {
 		this.boardtype = new HashMap<String, String>();
 	}
 	public void addPlayer(Player player) {
+		
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				boolean def = true;
-				if (main.configs.getConfig("config").getBoolean("enable_restricted_scoreboards")) {
-					for (Object res : main.configs.getConfig("config").getConfigurationSection("restricted_scoreboards").getKeys(false).toArray()) {
-						if (player.hasPermission(main.configs.getConfig("config").getString("restricted_scoreboards."+res))) {
-							boardtype.put(player.getName(), (String) res);
-							playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard((String) res).getString("title"), player));
-							def = false;
-						}
+				boolean setsb = true;
+				if (main.db != null) {
+					if (main.db.GetData("SELECT * FROM toggle_off WHERE uuid='" + player.getUniqueId().toString() + "'").size() > 0) {
+						setsb = false;
 					}
 				}
-				if (def && main.configs.getConfig("config").getBoolean("enable_default_scoreboard")) {
-					boardtype.put(player.getName(), main.configs.getConfig("config").getString("default_scoreboard"));
-					playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard(main.configs.getConfig("config").getString("default_scoreboard")).getString("title"), player));
-				}
-				else if (def && main.configs.getConfig("config").getBoolean("enable_perworld_scoreboards")) {
-					for (Object res : main.configs.getConfig("config").getConfigurationSection("world_scoreboards").getKeys(false).toArray()) {
-						if (player.getWorld().getName().equals(main.configs.getConfig("config").getString("world_scoreboards." + res))) {
-							boardtype.put(player.getName(), (String) res);
-							playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard((String) res).getString("title"), player));
+				if (setsb) {
+					boolean def = true;
+					if (main.configs.getConfig("config").getBoolean("enable_restricted_scoreboards")) {
+						for (Object res : main.configs.getConfig("config").getConfigurationSection("restricted_scoreboards").getKeys(false).toArray()) {
+							if (player.hasPermission(main.configs.getConfig("config").getString("restricted_scoreboards."+res))) {
+								boardtype.put(player.getName(), (String) res);
+								playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard((String) res).getString("title"), player));
+								def = false;
+							}
+						}
+					}
+					if (def && main.configs.getConfig("config").getBoolean("enable_default_scoreboard")) {
+						boardtype.put(player.getName(), main.configs.getConfig("config").getString("default_scoreboard"));
+						playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard(main.configs.getConfig("config").getString("default_scoreboard")).getString("title"), player));
+					}
+					else if (def && main.configs.getConfig("config").getBoolean("enable_perworld_scoreboards")) {
+						for (Object res : main.configs.getConfig("config").getConfigurationSection("world_scoreboards").getKeys(false).toArray()) {
+							if (player.getWorld().getName().equals(main.configs.getConfig("config").getString("world_scoreboards." + res))) {
+								boardtype.put(player.getName(), (String) res);
+								playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard((String) res).getString("title"), player));
+							}
 						}
 					}
 				}

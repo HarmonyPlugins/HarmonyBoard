@@ -27,6 +27,15 @@ config.yml is responsible for setting the default scoreboard, enabling permissio
       scoreboardworld: "world"
       scoreboardend: "world_the_end"
     scoreboard_update_rate: 1
+
+    save_scoreboard_preferences: false
+
+    mysql: false
+    host: "127.0.0.1"
+    port: 3306
+    username: "root"
+    password: "pass"
+    database: "harmonyboard"
 </details>
 
 ### language.yml
@@ -46,6 +55,8 @@ language.yml is responsible for the chat messages that you would receive whilst 
         invalid_player: "Player does not exist or is not online."
       admin:
         reloaded: "Config successfully reloaded."
+        toggle_on: "Toggled scoreboard on successfully."
+        toggle_off: "Toggled scoreboard off successfully."
 
 </details>
 
