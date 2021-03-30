@@ -1,6 +1,6 @@
 main: me.oreoezi.harmonyboard.HarmonyBoard
 name: HarmonyScoreboard
-version: 1.0.0
+version: 1.8.0
 description: Light Weight Asynchronous Scoreboard
 author: Oreoezi
 softdepend: [PlaceholderAPI]

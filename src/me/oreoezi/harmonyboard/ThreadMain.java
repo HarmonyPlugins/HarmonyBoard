@@ -1,6 +1,7 @@
 package me.oreoezi.harmonyboard;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -28,8 +29,15 @@ public class ThreadMain extends BukkitRunnable {
 	@Override
 	public void run() {
 		updateAnimations();
-		for (Player player : main.eventmain.playerboard.keySet()) {
-			updateScoreboard(player);
+		Set<Player> pllist = main.eventmain.playerboard.keySet();
+		for (Player player : pllist) {
+			try {
+				if (main.eventmain.playerboard.get(player).getDeleted()) continue;
+				updateScoreboard(player);
+			}
+			catch (Exception e) {
+				
+			}
 		}		
 	}
 	private void updateScoreboard(Player player) {
@@ -82,15 +90,19 @@ public class ThreadMain extends BukkitRunnable {
 	}
 	private String parseLine(String input, Player player) {
 		String line = input;
-		for (int i=0;i<anims.size();i++) {
-			if (anims.get(i) !=null)
-				line = line.replaceAll("a%" + anims.get(i).getName() + "%a", anims.get(i).getCurrentFrame());
+		try {
+			for (int i=0;i<anims.size();i++) {
+				if (anims.get(i) !=null)
+					line = line.replaceAll("a%" + anims.get(i).getName() + "%a", anims.get(i).getCurrentFrame());
+			}
+			for (int i=0;i<placeholders.size();i++) {
+				line = line.replaceAll("%"+placeholders.get(i).getName()+"%", placeholders.get(i).getValue(player));
+			}
+			if (main.papi) line = PlaceholderAPI.setPlaceholders(player, line);
+			line = ChatColor.translateAlternateColorCodes('&', line);
+		} catch(Exception e) {
+			
 		}
-		for (int i=0;i<placeholders.size();i++) {
-			line = line.replaceAll("%"+placeholders.get(i).getName()+"%", placeholders.get(i).getValue(player));
-		}
-		if (main.papi) line = PlaceholderAPI.setPlaceholders(player, line);
-		line = ChatColor.translateAlternateColorCodes('&', line);
 		return line;
 	}
 }

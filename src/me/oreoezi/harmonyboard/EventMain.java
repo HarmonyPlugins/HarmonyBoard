@@ -67,6 +67,7 @@ public class EventMain implements Listener {
 	}
 	@EventHandler
 	public void onLeave(PlayerQuitEvent event) {
+		if (playerboard.get(event.getPlayer()) != null) playerboard.get(event.getPlayer()).delete();
 		playerboard.remove(event.getPlayer());
 		boardtype.remove(event.getPlayer().getName());
 	}
@@ -75,7 +76,7 @@ public class EventMain implements Listener {
 		if (main.configs.getConfig("config").getBoolean("enable_perworld_scoreboards")) {
 			for (Object res : main.configs.getConfig("config").getConfigurationSection("world_scoreboards").getKeys(false).toArray()) {
 				if (event.getPlayer().getWorld().getName().equals(main.configs.getConfig("config").getString("world_scoreboards." + res))) {
-					if (playerboard.get(event.getPlayer()) != null) playerboard.get(event.getPlayer()).destroy();
+					if (playerboard.get(event.getPlayer()) != null) playerboard.get(event.getPlayer()).delete();
 					playerboard.remove(event.getPlayer());
 					boardtype.remove(event.getPlayer().getName());
 					boardtype.put(event.getPlayer().getName(), (String) res);
