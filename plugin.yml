@@ -3,6 +3,7 @@ name: HarmonyScoreboard
 version: 1.8.0
 description: Light Weight Asynchronous Scoreboard
 author: Oreoezi
+api-version: 1.16
 softdepend: [PlaceholderAPI]
 commands:
  harmonyboard:
