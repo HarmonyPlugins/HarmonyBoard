@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.oreoezi.harmonyboard.HarmonyBoard;
@@ -17,7 +18,7 @@ public class CommandScoreboard extends HarmonyCommand {
 		this.main = main;
 	}
 	@Override
-	public void onExec(Player player, String[] args) {
+	public void onExec(CommandSender player, String[] args) {
 		switch(args[1]) {
 		case "remove": {
 			if (args.length < 3) {
@@ -49,8 +50,8 @@ public class CommandScoreboard extends HarmonyCommand {
 						if (main.eventmain.playerboard.get(target) != null) main.eventmain.playerboard.get(target).destroy();
 						main.eventmain.playerboard.remove(target);
 						main.eventmain.boardtype.remove(target.getName());
-						main.eventmain.boardtype.put(player.getName(), args[3]);
-						main.eventmain.playerboard.put(player, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard(args[3]).getString("title"), player));
+						main.eventmain.boardtype.put(target.getName(), args[3]);
+						main.eventmain.playerboard.put(target, HandleScoreboardVersion.handleScoreboardVersion(main.getServer().getVersion(),main.configs.getScoreboard(args[3]).getString("title"), target));
 						found = true;
 						break;
 					}
@@ -62,7 +63,7 @@ public class CommandScoreboard extends HarmonyCommand {
 		default: {
 			player.sendMessage(main.cfu.getMessage("prefix") + " " + main.cfu.getMessage("messages.error.invalid_arguments"));
 		}
-		}
+		}	
 	}
 	@Override
 	public String getName() {

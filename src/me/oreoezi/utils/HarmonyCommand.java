@@ -3,15 +3,14 @@ package me.oreoezi.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.bukkit.entity.Player;
-
+import org.bukkit.command.CommandSender;
 import me.oreoezi.harmonyboard.HarmonyBoard;
 
 public class HarmonyCommand {
 	public HarmonyCommand(HarmonyBoard main) {
 		
 	}
-	public void onExec(Player player, String[] args) {
+	public void onExec(CommandSender player, String[] args) {
 		
 	}
 	public String getName() {

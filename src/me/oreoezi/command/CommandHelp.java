@@ -2,8 +2,7 @@ package me.oreoezi.command;
 
 import java.util.ArrayList;
 
-import org.bukkit.entity.Player;
-
+import org.bukkit.command.CommandSender;
 import me.oreoezi.harmonyboard.HarmonyBoard;
 import me.oreoezi.utils.HarmonyCommand;
 
@@ -20,7 +19,7 @@ public class CommandHelp {
 		commands.add(new CommandScoreboard(main));
 		commands.add(new CommandToggle(main));
 	}
-	public void sendHelpList(Player player) {
+	public void sendHelpList(CommandSender player) {
 		if (player.hasPermission("harmonyboard.help")) {
 			player.sendMessage("§7===========================================");
 			player.sendMessage(" ");

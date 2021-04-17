@@ -1,6 +1,7 @@
 package me.oreoezi.command;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 
@@ -17,7 +18,7 @@ public class CommandReload extends HarmonyCommand {
 		this.main = main;
 	}
 	@Override
-	public void onExec(Player player, String[] args) {
+	public void onExec(CommandSender player, String[] args) {
 		main.configs = new Configs(main);
 		main.threadmain.destroy();
 		HandlerList.unregisterAll(main.eventmain);
