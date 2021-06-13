@@ -3,7 +3,6 @@ package me.oreoezi.harmonyboard;
 import java.util.ArrayList;
 import java.util.Set;
 
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -14,6 +13,7 @@ import me.oreoezi.placeholders.symbols.*;
 import me.oreoezi.utils.HarmonyAnimation;
 import me.oreoezi.utils.HarmonyPlaceholder;
 import me.oreoezi.utils.HarmonyScoreboard;
+import net.md_5.bungee.api.ChatColor;
 
 public class ThreadMain extends BukkitRunnable {
 	private HarmonyBoard main;
@@ -29,16 +29,16 @@ public class ThreadMain extends BukkitRunnable {
 	@Override
 	public void run() {
 		updateAnimations();
+		try {
 		Set<Player> pllist = main.eventmain.playerboard.keySet();
-		for (Player player : pllist) {
-			try {
+			for (Player player : pllist) {
 				if (main.eventmain.playerboard.get(player).getDeleted()) continue;
 				updateScoreboard(player);
-			}
-			catch (Exception e) {
-				
-			}
-		}		
+			}	
+		}
+		catch (Exception e) {
+			
+		}
 	}
 	private void updateScoreboard(Player player) {
 		String boardtype = main.eventmain.boardtype.get(player.getName());

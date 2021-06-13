@@ -9,6 +9,7 @@ import me.oreoezi.utils.boardversions.Scoreboard_1_15;
 import me.oreoezi.utils.boardversions.Scoreboard_1_16;
 import me.oreoezi.utils.boardversions.Scoreboard_1_16_2;
 import me.oreoezi.utils.boardversions.Scoreboard_1_16_4;
+import me.oreoezi.utils.boardversions.Scoreboard_1_17;
 import me.oreoezi.utils.boardversions.Scoreboard_1_8;
 
 public class HandleScoreboardVersion {
@@ -27,6 +28,8 @@ public class HandleScoreboardVersion {
 			return new Scoreboard_1_16_2(title, player);
 		if (version.contains("1.16"))
 			return new Scoreboard_1_16(title, player);
+		if (version.contains("1.17"))
+			return new Scoreboard_1_17(title, player);
 		return new Scoreboard_1_8(title, player);
 	}
 }

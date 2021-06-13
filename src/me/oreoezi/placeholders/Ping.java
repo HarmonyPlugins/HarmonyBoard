@@ -8,6 +8,8 @@ import me.oreoezi.utils.HarmonyPlaceholder;
 public class Ping extends HarmonyPlaceholder{
 	private int getPing(Player player) {
 		String version = Bukkit.getServer().getVersion();
+		if (version.contains("1.17"))
+			return ((org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer) player).getHandle().e;
 		if (version.contains("1.16.5") || version.contains("1.16.4"))
 			return ((org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer) player).getHandle().ping;
 		if (version.contains("1.16.3") || version.contains("1.16.2"))
